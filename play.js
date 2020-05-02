@@ -41,5 +41,22 @@ for (let hobby of hobbies){
 } 
 */
 // ahora con .map muestro el array y puedo asignarle un tipo hobby:, el segundo ejemplo hace lo mismo pero solo muestra la data
-console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
-console.log(hobbies)
+//console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
+//console.log(hobbies)
+
+//hobbies.push('Programming');
+//console.log(hobbies)
+
+// para copiar objetos de un array se debe utilizar ... esto toma los elementos del antiguo array y los agrega a la copia
+const copiedArray = [...hobbies];
+console.log(copiedArray);
+
+const copiedPerson = {...person};
+console.log(copiedPerson);
+
+// aca puedo agregar tantos argumentos como quiera y el...aRG SE ADAPTARA A todos los argumentos o parametros q le pase al llamarlo en el console.log
+const toArray = (...arg) => {
+    return arg;
+};
+
+console.log(toArray(1,2,3,4));
