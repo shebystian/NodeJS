@@ -34,7 +34,22 @@ const person = {
     }
 };
 
+//const printName = (personData) => {
+ //   console.log(personData.name);
+//}
+const printName = ({name, age}) => {
+    console.log(name,age);
+}
+
+printName(person);
+
+const {name, age} = person;
+console.log(name, age);
+
 const hobbies = ['Sports', 'Cooking'];
+const [hobby1, hobby2] = hobbies;
+console.log(hobby1, hobby2);
+// const hobbies = ['Sports', 'Cooking'];
 /* con esto recorro y muestro cada hobby en cada iteracion
 for (let hobby of hobbies){
     console.log(hobby);
@@ -48,15 +63,16 @@ for (let hobby of hobbies){
 //console.log(hobbies)
 
 // para copiar objetos de un array se debe utilizar ... esto toma los elementos del antiguo array y los agrega a la copia
-const copiedArray = [...hobbies];
-console.log(copiedArray);
+// const copiedArray = [...hobbies];
+//console.log(copiedArray);
 
-const copiedPerson = {...person};
-console.log(copiedPerson);
+//const copiedPerson = {...person};
+//console.log(copiedPerson);
 
 // aca puedo agregar tantos argumentos como quiera y el...aRG SE ADAPTARA A todos los argumentos o parametros q le pase al llamarlo en el console.log
-const toArray = (...arg) => {
+/*const toArray = (...arg) => {
     return arg;
 };
 
 console.log(toArray(1,2,3,4));
+*/
