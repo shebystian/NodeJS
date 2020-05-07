@@ -32,7 +32,19 @@ const server = http.createServer((req, res) => {
     }
 
     if(url === '/message' && method === 'POST'){
-        fs.writeFileSync('message.txt', 'Dummy example');
+        const body = [];
+        req.on('data', (chunk)=>{
+            console.log(chunk);
+            body.push(chunk); //agrego con el push
+        });
+        req.on('end', () =>{
+            const parsedBody = Buffer.concat(body).toString(); // paso a string el body
+            console.log(parsedBody);
+            const message = parsedBody.split('=')[1];
+            fs.writeFileSync('message.txt', message);
+        });
+        
+        
         res.statusCode = 302; //numero aceptado por el navegador
         res.setHeader('Location','/'); //indicamos donde quiero dejar el archivo en este caso la raiz.
         return res.end();
