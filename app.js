@@ -41,13 +41,12 @@ const server = http.createServer((req, res) => {
             const parsedBody = Buffer.concat(body).toString(); // paso a string el body
             console.log(parsedBody);
             const message = parsedBody.split('=')[1];
-            fs.writeFileSync('message.txt', message);
+            fs.writeFile('message.txt', message, (err) =>{
+                res.statusCode = 302; //numero aceptado por el navegador
+                res.setHeader('Location','/'); //indicamos donde quiero dejar el archivo en este caso la raiz.
+                return res.end();
+            }); //writeFileSync se ejcuta de manera sincrona, writeFile permite q se ejecute lo de abajo sin terminar de ejecutarse este. 
         });
-        
-        
-        res.statusCode = 302; //numero aceptado por el navegador
-        res.setHeader('Location','/'); //indicamos donde quiero dejar el archivo en este caso la raiz.
-        return res.end();
     }
     closeServer = true;
     res.setHeader('Content-Type', 'text/html');
